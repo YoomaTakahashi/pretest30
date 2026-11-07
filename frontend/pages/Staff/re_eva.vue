@@ -4,7 +4,7 @@
             <v-col cols="12" md="12">
                 <v-card>
                     <v-card-title>
-                        <h1 class="text-center">รายงาน</h1>
+                        <h1 class="text-center dashboard-card-title">รายงาน</h1>
                     </v-card-title>
                     <v-card-text>
                         <v-table class="mt-3">

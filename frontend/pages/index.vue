@@ -5,9 +5,9 @@
                 <v-card color="#7d0c14">
                     <v-card-title>
                         <center><v-img class="mt-3" width="15%" src="/img/logo.png"></v-img></center>
-                        <h1 class="text-center">เข้าสู่ระบบ</h1>
-                        <h2 class="text-center">NTC Evaluation System</h2>
-                        <h2 class="text-center">ระบบประเมินบบุคลากรวิทยาลัยเทคนิคน่าน</h2>
+                        <h1 class="text-center dashboard-card-title">เข้าสู่ระบบ</h1>
+                        <h2 class="text-center dashboard-card-title">NTC Evaluation System</h2>
+                        <h2 class="text-center dashboard-card-title">ระบบประเมินบบุคลากรวิทยาลัยเทคนิคน่าน</h2>
                     </v-card-title>
                     <v-card-text class="bg-white">
                         <br>
@@ -87,5 +87,15 @@ const login = async()=>{
 </script>
 
 <style scoped>
+.dashboard-card-title {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    justify-content: center;
+    text-align: center;
+}
 
+.dashboard-card-title h3 {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    line-height: 1.4;
+}
 </style>

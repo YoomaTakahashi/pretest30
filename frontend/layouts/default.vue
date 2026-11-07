@@ -4,7 +4,7 @@
             <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title class="font-weight-bold">NTC EVALUATION SYSTEM </v-toolbar-title>
             <v-spacer></v-spacer>
-
+            <v-avatar :image="`${pic}/${user.pic_user}`" class="ms-3" size="50" v-if="user.pic_user"></v-avatar>
             <p class="text-center">คุณ : {{user.fname}} {{ user.lname }} <br> ตำแหน่ง : {{ user.role }}</p>
             <v-btn @click="logout" icon="mdi-logout" variant="text"></v-btn>
         </v-app-bar>
@@ -49,14 +49,11 @@ const isMobile = computed(()=> mdAndDown.value)
 const user = ref<any>({})
 const drawer =ref(false)
 
-
-
 const logout = ()=>{
-    if(confirm('ท่านต้องการออกจากระบบใช่หรือไม่'))return
+    if(confirm('ท่านต้องการออกจากระบบใช่หรือไม่'))
     localStorage.removeItem('token')
     navigateTo('/',{replace:true})
 }
-
 const roles = [
     //staff nav 
     {title:'หน้าหลัก',to:'/Staff/',role:'ฝ่ายบุคลากร'},
@@ -89,7 +86,7 @@ const roles = [
 ]
 
 const navitem = computed(() => roles.filter((item)=> item.role.includes(user.value.role)))
-
+const pic = new URL('/uploads/pic_user', api).href
 const fetch = async()=>{
     const token = localStorage.getItem('token')
     if(!token){

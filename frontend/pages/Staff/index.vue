@@ -1,11 +1,12 @@
 <template>
     <v-container>
         <v-sheet elevation="5" rounded="xl" class="pa-3">
-            <h1 class="text-center">Dashboard-Staff</h1>
+            <h1 class="text-center dashboard-card-title">Dashboard-Staff</h1>
+            <v-divider color="black" thickness="1px" class="my-5"></v-divider>
             <v-row>
                 <v-col cols="12" md="4" v-for="b in box" :key="b">
                     <v-card rounded="xl">
-                        <v-card-title><h3 class="text-center">{{ b.title }}</h3></v-card-title>
+                        <v-card-title class="dashboard-card-title"><h3 class="text-center">{{ b.title }}</h3></v-card-title>
                         <v-card-text class="text"><h1 class="text-center">{{ b.value }}</h1></v-card-text>
                     </v-card>
                 </v-col>
@@ -13,13 +14,15 @@
             <v-row>
                 <v-col cols="12" md="4" v-for="b in box2" :key="b">
                     <v-card rounded="xl">
-                        <v-card-title><h3 class="text-center">{{ b.title }}</h3></v-card-title>
+                        <v-card-title class="dashboard-card-title"><h3 class="text-center">{{ b.title }}</h3></v-card-title>
                         <v-card-text class="text"><h1 class="text-center">{{ b.value }}</h1></v-card-text>
                     </v-card>
                 </v-col>
             </v-row>
         </v-sheet>
         <v-sheet class="mt-5 pa-3" rounded="xl" elevation="5">
+            <h1 class="text-center">ผู้รับการประเมินผล</h1>
+            <v-divider color="black" thickness="1px" class="my-5"></v-divider>
             <v-table class="mt-3">
                 <thead>
                     <tr>
@@ -160,5 +163,15 @@ onMounted(fetch)
 </script>
 
 <style scoped>
+.dashboard-card-title {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    justify-content: center;
+    text-align: center;
+}
 
+.dashboard-card-title h3 {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    line-height: 1.4;
+}
 </style>

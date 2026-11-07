@@ -4,7 +4,7 @@
             <v-col cols="12" md="12">
                 <v-card>
                     <v-card-title>
-                        <h1 class="text-center">จัดการกรรมการประเมิน</h1>
+                        <h1 class="textcenter dashboard-card-title">จัดการกรรมการประเมิน</h1>
                     </v-card-title>
                     <v-card-text>
                         <br>
@@ -193,5 +193,15 @@ onMounted(fetch)
 </script>
 
 <style scoped>
+.dashboard-card-title {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    justify-content: center;
+    text-align: center;
+}
 
+.dashboard-card-title h3 {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    line-height: 1.4;
+}
 </style>

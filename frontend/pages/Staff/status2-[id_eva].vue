@@ -3,7 +3,7 @@
         <v-row justify="center">
             <v-col cols="12" md="12">
                 <v-card class="mb-3">
-                    <v-card-title><h1 class="text-center">ผู้รับการประเมินผล</h1></v-card-title>
+                    <v-card-title><h1 class="textcenter dashboard-card-title">ผู้รับการประเมินผล</h1></v-card-title>
                     <v-card-text>
                         <p>ชื่อ-สกุล: {{ header.fname }} {{ header.lname }}</p>
                         <p>รอบการประเมินที่: {{ header.round_sys }} {{ header.year_sys }}</p>
@@ -11,7 +11,7 @@
                 </v-card>
                 <v-card>
                     <v-card-title>
-                        <h1 class="text-center">สถานะการประเมินของกรรมการประเมิน</h1>
+                        <h1 class="textcenter dashboard-card-title">สถานะการประเมินของกรรมการประเมิน</h1>
                     </v-card-title>
                     <v-card-text>
                         <v-table class="mt-3">
@@ -92,5 +92,15 @@ onMounted(fetch)
 </script>
 
 <style scoped>
+.dashboard-card-title {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    justify-content: center;
+    text-align: center;
+}
 
+.dashboard-card-title h3 {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    line-height: 1.4;
+}
 </style>

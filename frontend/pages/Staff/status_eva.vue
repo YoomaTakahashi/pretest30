@@ -4,7 +4,7 @@
             <v-col cols="12" md="12">
                 <v-card>
                     <v-card-title>
-                        <h1 class="text-center">สถานะการประเมินของผู้รับการประเมินผล</h1>
+                        <h1 class="text-center dashboard-card-title">สถานะการประเมินของผู้รับการประเมินผล</h1>
                     </v-card-title>
                     <v-card-text>
                         <v-text-field class="mt-3" v-model="search" prepend-inner-icon="mdi-magnify"></v-text-field>
@@ -160,5 +160,15 @@ onMounted(fetch)
 </script>
 
 <style scoped>
+.dashboard-card-title {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    justify-content: center;
+    text-align: center;
+}
 
+.dashboard-card-title h3 {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    line-height: 1.4;
+}
 </style>

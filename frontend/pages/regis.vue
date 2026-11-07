@@ -5,7 +5,7 @@
                 <v-card color="#7d0c14">
                     <v-card-title>
                         <center><v-img class="mt-3" width="15%" src="/img/logo2.png"></v-img></center>
-                        <h1 class="text-center">สมัครสมาชิก</h1>
+                        <h1 class="text-center dashboard-card-title">สมัครสมาชิก</h1>
                     </v-card-title>
                     <v-card-text class="bg-white">
                         <br>
@@ -121,5 +121,15 @@ const saveMember = async()=>{
 </script>
 
 <style scoped>
+.dashboard-card-title {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    justify-content: center;
+    text-align: center;
+}
 
+.dashboard-card-title h3 {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    line-height: 1.4;
+}
 </style>
