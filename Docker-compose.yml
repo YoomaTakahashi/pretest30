@@ -52,8 +52,8 @@ services:
   mysql:
     image: mysql:8.0
     container_name: MYSQL_Container
-    ports: ["3305:3306"]
-    restart: unless-stopped
+    ports: ["3305:3307"]
+    restart: always
     volumes:
       - ./database:/docker-entrypoint-initdb.d
       - mysql_data_clean:/var/lib/mysql

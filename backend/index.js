@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(fileUp())
 app.use('/uploads',express.static(path.join(__dirname,'./uploads')))
 
-//-------------------------------------------------------global api ----------------------------------------------\\
+//-------------------------------------------------------global api -------------------------------------------------------------------------------\\
 
 const profile = require('./routes/profile')
 app.use('/api/profile',profile)
@@ -27,11 +27,8 @@ app.use('/api/dash',dash )
 const docnoe = require('./routes/docnoe')
 app.use('/api/docnoe',docnoe )
 
-//-------------------------------------------------------staff api ----------------------------------------------\\
+//-------------------------------------------------------staff api ---------------------------------------------------------------------------\\
 
-
-const member = require('./routes/Staff/member')
-app.use('/api/Staff/member',member)
 
 const topic = require('./routes/Staff/topic')
 app.use('/api/Staff/topic',topic)
@@ -51,19 +48,24 @@ app.use('/api/Staff/commit',commit)
 const doc = require('./routes/Staff/doc')
 app.use('/api/Staff/doc',doc)
 
-//-------------------------------------------------------eva api ----------------------------------------------\\
+const member = require('./routes/Staff/member')
+app.use('/api/Staff/member',member)
 
-const selfeva = require('./routes/Eva/selfeva')
-app.use('/api/Eva/selfeva',selfeva  )
+//-------------------------------------------------------eva api ----------------------------------------------------------------------------\\
 
-const score_member = require('./routes/Eva/score_member')
-app.use('/api/Eva/score_member',score_member  )
 
-const score_commit = require('./routes/Eva/score_commit')
-app.use('/api/Eva/score_commit',score_commit  )
 
 const edit_eva = require('./routes/Eva/edit_eva')
-app.use('/api/Eva/edit_eva',edit_eva  )
+app.use('/api/Eva/edit_eva',edit_eva)
+
+const score_commit = require('./routes/Eva/score_commit')
+app.use('/api/Eva/score_commit',score_commit)
+
+const score_member = require('./routes/Eva/score_member')
+app.use('/api/Eva/score_member',score_member)
+
+const selfeva = require('./routes/Eva/selfeva')
+app.use('/api/Eva/selfeva',selfeva)
 
 const table = require('./routes/Eva/table')
 app.use('/api/Eva/table',table  )
