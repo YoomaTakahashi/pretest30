@@ -22,7 +22,7 @@
                                     <td class="text-center border">{{ index+1 }}</td>
                                     <td class="text-center border">{{ items.fname }}</td>
                                     <td class="text-center border">{{ items.lname }}</td>
-                                    <td class="text-center border">{{ items.day_eva }}</td>
+                                    <td class="text-center border">{{ formatDate(items.day_eva) }}</td>
                                     <td class="text-center border">รอบการประเมินที่ {{ items.round_sys }} ปี {{ year_sys }}</td>
                                     <td class="text-center border">{{ items.status_eva === 1 ? 'ยังไม่ได้ประเมิน' : items.status_commit === 'y' ? 'ประเมินสำเร็จ' : items.status_eva === 2 ? 'รอกรรมการประเมิน' : 'ประเมินเสร็จสิ้น' }}</td>
                                     <td class="text-center border">
@@ -59,6 +59,18 @@ const fetch = async () => {
 
 const go = (id_eva:number) => {
     navigateTo({path:`/Committee/Save_Score${id_eva}`})
+}
+
+const formatDate = (dateStr:string)=>{
+    if(!dateStr)return '-'
+
+    const date = new Date(dateStr)
+    const day = String(date.getDate()).padStart(2,'0')
+    const month = String(date.getMonth()).padStart(2,'0')
+    const year = String(date.getFullYear())
+
+    return `${day}/${month}/${year}`
+
 }
 
 onMounted(fetch)

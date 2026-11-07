@@ -20,7 +20,7 @@
                                     <td class="text-center border">{{ index+1 }}</td>
                                     <td class="text-center border">{{ items.fname }}</td>
                                     <td class="text-center border">{{ items.lname }}</td>
-                                    <td class="text-center border">{{ items.day_eva }}</td>
+                                    <td class="text-center border">{{ formatDate(items.day_eva) }}</td>
                                     <td class="text-center border">
                                         <v-btn color="blue" class="text-white" size="small" @click="go(items.id_eva)">ตรวจสอบ</v-btn>
                                     </td>
@@ -55,6 +55,18 @@ const fetch = async () => {
 
 const go = (id_eva:number) => {
     navigateTo({path:`/Committee/Score_member${id_eva}`})
+}
+
+const formatDate = (dateStr:string)=>{
+    if(!dateStr)return '-'
+
+    const date = new Date(dateStr)
+    const day = String(date.getDate()).padStart(2,'0')
+    const month = String(date.getMonth()).padStart(2,'0')
+    const year = String(date.getFullYear())
+
+    return `${day}/${month}/${year}`
+
 }
 
 onMounted(fetch)

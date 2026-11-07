@@ -24,6 +24,9 @@ app.use('/api/auth',auth)
 const docnoe = require('./routes/docnoe')
 app.use('/api/docnoe',docnoe )
 
+const dash = require('./routes/dash')
+app.use('/api/dash',dash )
+
 //----------------------------------------------------------staff api------------------------------------------------------------------//
 const member = require('./routes/Staff/member')
 app.use('/api/Staff/member',member)
@@ -88,6 +91,9 @@ app.use('/api/Commit/save_score',save_score)
 
 const score_member3 = require('./routes/Commit/score_member')
 app.use('/api/Commit/score_member',score_member3)
+
+const score_commit3 = require('./routes/Commit/score_commit')
+app.use('/api/Commit/score_commit',score_commit3)
 
 app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
 app.listen(3001,()=>{
