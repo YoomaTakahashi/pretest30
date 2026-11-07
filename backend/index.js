@@ -13,16 +13,13 @@ app.use(express.json())
 app.use(fileUp())
 app.use('/uploads',express.static(path.join(__dirname,'./uploads')))
 
-//-------------------------------------------------------global api ----------------------------------------------\\
+//-------------------------------------------------------global api -------------------------------------------------------------------------------\\
 
 const profile = require('./routes/profile')
 app.use('/api/profile',profile)
 
 const auth = require('./routes/auth')
 app.use('/api/auth',auth)
-
-const dash = require('./routes/dash')
-app.use('/api/dash',dash )
 
 const docnoe = require('./routes/docnoe')
 app.use('/api/docnoe',docnoe )
@@ -58,7 +55,7 @@ app.use('/api/Staff/score_member',score_member2)
 const score_commit2 = require('./routes/Staff/score_commit')
 app.use('/api/Staff/score_commit',score_commit2)
 
-
+//-------------------------------------------------------eva api ----------------------------------------------\\
 
 const selfeva = require('./routes/Eva/selfeva')
 app.use('/api/Eva/selfeva',selfeva  )
@@ -75,8 +72,22 @@ app.use('/api/Eva/edit_eva',edit_eva  )
 const table = require('./routes/Eva/table')
 app.use('/api/Eva/table',table  )
 
-//-------------------------------------------------------commit api ----------------------------------------------\\
 
+//-------------------------------------------------------commit api ----------------------------------------------\\
+const show_eva = require('./routes/Commit/show_eva')
+app.use('/api/Commit/show_eva',show_eva)
+
+const check = require('./routes/Commit/check')
+app.use('/api/Commit/check',check  )
+
+const signature = require('./routes/Commit/signature')
+app.use('/api/Commit/signature',signature  )
+
+const save_score = require('./routes/Commit/save_score')
+app.use('/api/Commit/save_score',save_score)
+
+const score_member3 = require('./routes/Commit/score_member')
+app.use('/api/Commit/score_member',score_member3)
 
 app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
 app.listen(3001,()=>{

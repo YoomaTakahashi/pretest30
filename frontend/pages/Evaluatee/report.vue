@@ -33,7 +33,7 @@
                             <v-row>
                                 <label for="">ข้อเสนอแนะของกรรมการ</label>
                                 <v-row>
-                                    <v-col cols="12" v-for="(commit,c) in commits":key="commit.id_commit">
+                                    <v-col cols="12" md="4" v-for="(commit,c) in commits":key="commit.id_commit">
                                         <img :src="`http://localhost:3001/uploads/signature/${commit.signature}`" :alt="`รอ${commit.level_commit}ประเมิน`" width="20%" > <br>
                                         {{ commit.fname }} {{ commit.lname }} {{ commit.level_commit }}
                                     </v-col>
