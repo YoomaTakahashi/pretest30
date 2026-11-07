@@ -4,7 +4,7 @@
             <v-col cols="12">
                 <v-alert v-if="user.status_eva === 1"></v-alert>
                 <v-form v-if="user.status_commit === 'n'" @submit.prevent="saveScore">
-                    <h1 class="font-weight-bold">แบบประเมินตนเอง</h1>
+                    <h1 class="font-weight-bold">ดำเนินการประเมิน</h1>
                     <v-card elevation="5" rounded >
                         <p class="ms-2">คุณ : {{ user.fname }} {{ user.lname }}</p>
                         <p class="ms-2">รอบการประเมินที่ : {{ user.round_sys }} ปี {{ user.year_sys }}</p>
