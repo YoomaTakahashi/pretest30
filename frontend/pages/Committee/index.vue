@@ -63,7 +63,7 @@ const fetch = async () => {
 
 
 const go = (id_eva:number) => {
-    navigateTo({path:`/Committee/Show_eva${id_eva}`})
+    navigateTo({path:`/Committee/Score_member${id_eva}`})
 }
 
 onMounted(fetch)
