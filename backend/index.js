@@ -72,6 +72,11 @@ app.use('/api/Eva/table',table  )
 
 //-------------------------------------------------------commit api ----------------------------------------------\\
 
+const check = require('./routes/Commit/check')
+app.use('/api/Commit/check',check  )
+
+const signature = require('./routes/Commit/signature')
+app.use('/api/Commit/signature',signature  )
 
 app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
 app.listen(3001,()=>{
