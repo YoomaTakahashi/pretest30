@@ -21,10 +21,12 @@ app.use('/api/profile',profile)
 const auth = require('./routes/auth')
 app.use('/api/auth',auth)
 
-//-------------------------------------------------------staff api ----------------------------------------------\\
-
 const docnoe = require('./routes/docnoe')
 app.use('/api/docnoe',docnoe )
+
+const dash =require('./routes/dash')
+app.use('/api/dash',dash)
+
 
 //-------------------------------------------------------staff api ---------------------------------------------------------------------------\\
 
@@ -37,9 +39,22 @@ app.use('/api/Eva/score_member',score_member  )
 const score_commit = require('./routes/Eva/score_commit')
 app.use('/api/Eva/score_commit',score_commit  )
 
+const edit_eva = require('./routes/Eva/edit_eva')
+app.use('/api/Eva/edit_eva',edit_eva  )
+
+const table = require('./routes/Eva/table')
+app.use('/api/Eva/table',table  )
+
+
 //-------------------------------------------------------commit api ----------------------------------------------\\
 const show_eva = require('./routes/Commit/show_eva')
 app.use('/api/Commit/show_eva',show_eva)
+
+const check = require('./routes/Commit/check')
+app.use('/api/Commit/check',check  )
+
+const signature = require('./routes/Commit/signature')
+app.use('/api/Commit/signature',signature  )
 
 const save_score = require('./routes/Commit/save_score')
 app.use('/api/Commit/save_score',save_score)
