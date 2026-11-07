@@ -43,10 +43,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(items,index) in result" :key="items.id_sys">
+                                <tr v-for="(items,index) in result" :key="items.id_eva">
                                     <td class="border text-center">{{ index+1 }}</td>
                                     <td class="border text-center">{{ items.fname}} {{ items.lname }}</td>
-                                    <td class="border text-center">{{items.round_sys}} {{ items.year_sys }}</td>
+                                    <td class="border text-center">รอบการประเมินที่:{{items.round_sys}} ปี:{{ items.year_sys }}</td>
                                     <td class="border text-center">{{ formatDate(items.day_eva) }}</td>
                                     <td class="border text-center">
                                         <center><v-btn class="text-center text-white ma-2" color="success" size="small" @click="go(items.id_eva)">เพิ่มกรรมการ</v-btn></center>
