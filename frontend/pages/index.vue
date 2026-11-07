@@ -49,7 +49,7 @@ import { api } from '~/API/base'
 definePageMeta({
     layout:false
 })
-const error = ref<Record<string,string>>({})
+const error = ref('')
 const pic_user = ref<File | null>(null)
 const typeR = ['ฝ่ายบุคลากร','ผู้รับการประเมินผล','กรรมการประเมิน']
 const show = ref(false)
@@ -77,8 +77,9 @@ const login = async()=>{
         if(useRole === 'ฝ่ายบุคลากร')return useRouter().push('/Staff')
         if(useRole === 'ผู้รับการประเมินผล')return useRouter().push('/Evaluatee')
         if(useRole === 'กรรมการประเมิน')return useRouter().push('/Committee')
-    } catch (error) {
-        console.error("Error regis",error);
+    } catch (err:any) {
+        console.error("Error login",err);
+        error.value = err.response?.data?.message || 'เข้าสู่ระบบไม่สำเร็จ'
         
     }
 }
