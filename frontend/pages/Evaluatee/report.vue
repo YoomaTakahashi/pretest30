@@ -13,9 +13,6 @@
                                     <th class="border pa-2 bg-grey" style="width: 10%;">รายละเอียดตัวชี้วัด</th>
                                     <th class="border pa-2 bg-grey" style="width: 10%;">น้ำหนักคะแนน</th>
                                     <th class="border pa-2 bg-grey" style="width: 10%;">คะแนนเต็ม</th>
-                                    <th class="border pa-2 bg-grey" style="width: 10%;">ประธาน</th>
-                                    <th class="border pa-2 bg-grey" style="width: 10%;">กรรมการ</th>
-                                    <th class="border pa-2 bg-grey" style="width: 10%;">เลขา</th>
                                     <th class="border pa-2 bg-grey" style="width: 10%;">คะแนนที่ได้</th>
                                 </tr>
                                 <tr v-for="(indicate,i) in topic.indicates" :key="indicate.id_indicate">
@@ -23,9 +20,6 @@
                                     <td class="border pa-2 text-center" style="width: 10%;">{{ indicate.detail_indicate }}</td>
                                     <td class="border pa-2 text-center" style="width: 10%;">{{ indicate.point_indicate }}</td>
                                     <td class="border pa-2 text-center" style="width: 10%;">{{ indicate.point_indicate*4 }}</td>
-                                    <td class="border pa-2 text-center" style="width: 10%;">{{ scores[indicate.id_indicate]?. a ?? "รอประธานประเมิน" }}</td>
-                                    <td class="border pa-2 text-center" style="width: 10%;">{{ scores[indicate.id_indicate]?. b ?? "รอกรรมการประเมิน" }}</td>
-                                    <td class="border pa-2 text-center" style="width: 10%;">{{ scores[indicate.id_indicate]?. c ?? "รอเลขาประเมิน" }}</td>
                                     <td class="border pa-2 text-center" style="width: 10%;">{{ (((scores[indicate.id_indicate]?. a ?? 0)+(scores[indicate.id_indicate]?. b ?? 0)+(scores[indicate.id_indicate]?. c ?? 0))/3).toFixed(2) }}</td>
                                 </tr>
                              </v-table>

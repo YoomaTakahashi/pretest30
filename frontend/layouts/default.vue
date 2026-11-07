@@ -52,7 +52,7 @@ const drawer =ref(false)
 
 
 const logout = ()=>{
-    if(confirm('ท่านต้องการออกจากระบบใช่หรือไม่'))return
+    if(confirm('ท่านต้องการออกจากระบบใช่หรือไม่'))
     localStorage.removeItem('token')
     navigateTo('/',{replace:true})
 }

@@ -42,7 +42,7 @@ import axios from 'axios';
 import { api,eva } from '~/API/base';
 
 const box = ref([])
-const indicates = ref([])
+const indicates = ref<any>([])
 
 const fetch = async()=>{
     const token = localStorage.getItem('token')
@@ -56,8 +56,8 @@ const fetch = async()=>{
 const fetchIn = async()=>{
     const token = localStorage.getItem('token')
     try {
-        const res = await axios.get(`${eva}/table/eva`,{headers:{Authorization:`Bearer ${token}`}})
-        indicates.value = res.data.box
+        const res = await axios.get(`${eva}/table`,{headers:{Authorization:`Bearer ${token}`}})
+        indicates.value = res.data
     } catch (error) {
         console.error('Error get box',error)
     }
@@ -69,5 +69,7 @@ onMounted(async()=>{
 </script>
 
 <style scoped>
-
+.round{
+    border-radius: 20px !important;
+}
 </style>
