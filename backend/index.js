@@ -13,9 +13,19 @@ app.use(express.json())
 app.use(fileUp())
 app.use('/uploads',express.static(path.join(__dirname,'./uploads')))
 
+//-------------------------------------------------------global api ----------------------------------------------\\
+
+const profile = require('./routes/profile')
+app.use('/api/profile',profile)
+
 const auth = require('./routes/auth')
 app.use('/api/auth',auth)
 
+const dash = require('./routes/dash')
+app.use('/api/dash',dash)
+
+
+//-------------------------------------------------------staff api ----------------------------------------------\\
 const member = require('./routes/Staff/member')
 app.use('/api/Staff/member',member)
 
@@ -36,6 +46,13 @@ app.use('/api/Staff/commit',commit)
 
 const doc = require('./routes/Staff/doc')
 app.use('/api/Staff/doc',doc)
+
+const status = require('./routes/Staff/status')
+app.use('/api/Staff/status',status)
+
+//-------------------------------------------------------eva api ----------------------------------------------\\
+
+//-------------------------------------------------------commit api ----------------------------------------------\\
 
 app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
 app.listen(3001,()=>{

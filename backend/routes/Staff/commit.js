@@ -60,7 +60,7 @@ router.get('/member/:id_eva',verifyToken,requireRole('ฝ่ายบุคล�
     try {
         const {id_eva} = req.params
         const [pick] = await db.query(`select id_member,concat(fname,' ',lname)as fullname_commit from tb_member where role='กรรมการประเมิน' order by id_member desc`) 
-        const [picked] = await db.query(`select m.id_member,fname,lname,id_commit,level_commit as role from tb_member m,tb_commit c,tb_eva where c.id_eva = ? and c.id_eva = e.id_eva and c.id_member = m.id_member`,[id_eva]) 
+        const [picked] = await db.query(`select m.id_member,fname,lname,id_commit,level_commit as role from tb_member m,tb_commit c,tb_eva e where c.id_eva = ? and c.id_eva = e.id_eva and c.id_member = m.id_member`,[id_eva]) 
         res.json({pick,picked})
         
     } catch (error) {

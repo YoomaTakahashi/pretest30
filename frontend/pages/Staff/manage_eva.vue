@@ -156,7 +156,7 @@ const saveMember = async()=>{
 
 const fetch = async()=>{
     try {
-        const res = await axios.post(`${staff}/member/showE`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${staff}/member/showE`,{headers:{Authorization:`Bearer ${token}`}})
         dataResult.value = res.data
     } catch (error) {
         console.error("error get",error);

@@ -28,7 +28,7 @@
                                 </tr>
                             </tbody>
                         </v-table>
-                        <center><v-btn class="text-center text-white ma-2" color="warning" @click="print()" prepend-icon="mdi-printer">พิมพ์</v-btn></center>
+                        <center><v-btn class="text-center text-white ma-2 no-p" color="warning" @click="print()" prepend-icon="mdi-printer">พิมพ์</v-btn></center>
                     </v-card-text>
                 </v-card>
             </v-col>
@@ -69,6 +69,9 @@ const showPw = ref(false)
 const search = ref('')
 const emailRegex = /^[^\s]+@[^\s]+\.[^\s]{2,}$/i
 
+const print = ()=>{
+    window.print()
+}
 function validate(){
     const f=  form.value
     error.value = {}
@@ -118,7 +121,7 @@ const saveMember = async()=>{
 
 const fetch = async()=>{
     try {
-        const res = await axios.post(`${staff}/member/showE`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${staff}/member/showE`,{headers:{Authorization:`Bearer ${token}`}})
         dataResult.value = res.data
     } catch (error) {
         console.error("error get",error);
@@ -155,5 +158,24 @@ onMounted(fetch)
 </script>
 
 <style scoped>
+@media print {
+    .v-app-bar,.v-btn.no-p{
+        display: none !important;
+        margin-top: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 0px !important;
+    }
+    td,th{
+        border: 1px black solid !important;
+        color: black !important;
+    }
+    h1{
+        color: black !important;
+    }
 
+    .v-card{
+        width: 100%;
+    }
+}
 </style>

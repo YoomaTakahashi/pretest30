@@ -6,8 +6,8 @@ const router = express.Router()
 
 router.post('/save',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try {
-        const {name_indicate,detail_indicate,point_indicate,check_indicate} = req.body
-        const [rows] = await db.query(`insert into tb_indicate(name_indicate,detail_indicate,point_indicate,check_indicate) values(?,?,?,?,?)`,[name_indicate,detail_indicate,point_indicate,check_indicate]) 
+        const {id_topic,name_indicate,detail_indicate,point_indicate,check_indicate} = req.body
+        const [rows] = await db.query(`insert into tb_indicate(id_topic,name_indicate,detail_indicate,point_indicate,check_indicate) values(?,?,?,?,?)`,[id_topic,name_indicate,detail_indicate,point_indicate,check_indicate]) 
         res.json({rows,message:"save success"})
     } catch (error) {
         console.error("error save",error);

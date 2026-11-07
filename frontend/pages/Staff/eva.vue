@@ -16,7 +16,7 @@
                                 <v-col cols="12" md="6">
                                     <v-select label="รอบการประเมิน" v-model="form.id_sys" :error-messages="error.id_sys" :items="round.map((t)=>({title:`รอบการประเมินที่:${t.round_sys} ปี:${t.year_sys}`,value:t.id_sys}))"></v-select>
                                 </v-col>
-                                <v-col cols="12" md="6">
+                                <v-col cols="12" md="12">
                                     <v-text-field label="วันที่ออกแบบประเมิน" v-model="form.day_eva" :error-messages="error.day_eva" type="date"></v-text-field>
                                 </v-col>
 
@@ -76,6 +76,8 @@ import { api, staff } from '~/API/base'
 
 const error = ref<Record<string,string>>({})
 const dataResult = ref([])
+const eva = ref([])
+const round = ref([])
 const form = ref({
     id_eva:null,
     id_member:'',
@@ -123,8 +125,12 @@ const saveMember = async()=>{
 
 const fetch = async()=>{
     try {
-        const res = await axios.post(`${staff}/eva/show`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${staff}/eva/show`,{headers:{Authorization:`Bearer ${token}`}})
         dataResult.value = res.data
+        const res2 = await axios.get(`${staff}/member/showE`,{headers:{Authorization:`Bearer ${token}`}})
+        eva.value = res2.data
+        const res3 = await axios.get(`${staff}/system/showY`,{headers:{Authorization:`Bearer ${token}`}})
+        round.value = res3.data
     } catch (error) {
         console.error("error get",error);
         

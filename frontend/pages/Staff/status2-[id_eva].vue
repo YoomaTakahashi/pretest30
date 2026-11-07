@@ -73,9 +73,9 @@ const token = import.meta.client ? localStorage.getItem('token'):null
 
 const fetch = async()=>{
     try {
-        const res = await axios.post(`${staff}/commit/header/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${staff}/commit/header/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         header.value = res.data
-        const res2 = await axios.post(`${staff}/status/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
+        const res2 = await axios.get(`${staff}/status/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         result.value = res2.data
     } catch (error) {
         console.error("error get",error);

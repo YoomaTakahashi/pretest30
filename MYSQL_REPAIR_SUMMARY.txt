@@ -1,0 +1,34 @@
+สรุปการแก้ปัญหา MySQL / pretest30
+
+สาเหตุที่พบ
+- MySQL เดิมล้มตอนเริ่ม InnoDB โดย log ระบุว่าไม่สามารถสร้าง redo log เพราะไฟล์ข้อมูลเสียหายหรือฐานข้อมูลไม่ได้ปิดอย่างสะอาด
+- ไม่พบไฟล์ SQL สำหรับสร้างตารางในโฟลเดอร์ database
+- โฟลเดอร์ backend มี Dockerfile และ package.json แต่ไม่มี index.js หรือไฟล์ source ของแอป
+
+สิ่งที่แก้ไข
+- แก้ Docker-compose.yml โดยคงรูปแบบและโครงสร้างเดิมเป็นหลัก
+- ระบุ MySQL เป็น mysql:8.0 เพื่อใช้เวอร์ชันหลักที่แน่นอน
+- แก้การ map พอร์ต MySQL จาก 3305:3307 เป็น 3305:3306 (พอร์ตภายใน MySQL คือ 3306)
+- เพิ่ม healthcheck ให้ MySQL และให้ backend กับ phpMyAdmin รอจน MySQL healthy
+- แยกฐานข้อมูลใหม่ไปยัง volume pretest30_mysql_data_clean เพื่อไม่เขียนทับข้อมูลเดิม
+- คง volume เก่า pretest30_mysql_data ไว้ และหยุดคอนเทนเนอร์กู้คืนที่เปิดข้อมูลเดิมไม่สำเร็จ
+- สำรองไฟล์ volume เดิมไว้ใน Docker volume pretest30_mysql_backup ภายใต้ไฟล์ mysql_data_backup.tar.gz
+
+ผลตรวจสอบ
+- docker compose config ผ่าน
+- MYSQL_Container ทำงานและรายงาน healthy
+- mysqladmin ping ตอบ mysqld is alive
+- MySQL เปิด port 3305 บน host ไปยัง port 3306 ใน container
+- ฐานข้อมูล pretest30 ใหม่ถูกสร้าง แต่ยังไม่มีตาราง เพราะไม่พบ SQL init script
+- Backend_Container ยังไม่พร้อมให้บริการ: node แจ้งว่าไม่พบ /app/index.js
+- ไม่ได้ยืนยันการทำงานของ API, frontend เชื่อมต่อ API, หรือข้อมูลเดิม
+
+ข้อควรทราบ
+- ฐานข้อมูลที่ทำงานอยู่เป็นฐานข้อมูลใหม่และว่าง ไม่ใช่ข้อมูลจาก volume เดิม
+- อย่าลบ pretest30_mysql_data หรือ pretest30_mysql_backup จนกว่าจะกู้ข้อมูล/ตรวจสอบ backup เสร็จ
+- ไฟล์สำรองอยู่ใน Docker volume ไม่ใช่ไฟล์ในโฟลเดอร์โปรเจกต์
+
+ขั้นตอนต่อไป
+1. คืนไฟล์ backend source ที่มี index.js หรือแก้คำสั่งเริ่ม backend ให้ตรงกับ entrypoint จริง
+2. นำเข้า SQL backup ที่ถูกต้องหรือไฟล์สร้าง schema ลงในฐานข้อมูล pretest30
+3. ทดสอบ backend และแอปทั้งหมดหลังนำ source/schema กลับมา

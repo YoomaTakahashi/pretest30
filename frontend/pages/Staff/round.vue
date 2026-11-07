@@ -22,7 +22,7 @@
                                 <v-col cols="12" md="6">
                                     <v-text-field label="ปีการประเมิน" v-model="form.year_sys" :error-messages="error.year_sys" type="number"></v-text-field>
                                 </v-col>
-                                <v-col cols="12" md="6">
+                                <v-col cols="12" md="12">
                                     <v-select label="สถานะการประเมิน" v-model="form.status_sys" :error-messages="error.status_sys" :items="[{title:'เปิด',value:'y'},{title:'ปิด',value:'n'}]"></v-select>
                                 </v-col>
                             </v-row>
@@ -133,7 +133,7 @@ const saveMember = async()=>{
 
 const fetch = async()=>{
     try {
-        const res = await axios.post(`${staff}/system/show`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${staff}/system/show`,{headers:{Authorization:`Bearer ${token}`}})
         result.value = res.data
     } catch (error) {
         console.error("error get",error);

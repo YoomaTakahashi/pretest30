@@ -89,9 +89,9 @@ const saveMember = async()=>{
 
 const fetch = async()=>{
     try {
-        const res = await axios.post(`${staff}/commit/header/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${staff}/commit/header/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         header.value = res.data
-        const res2 = await axios.post(`${staff}/commit/member/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
+        const res2 = await axios.get(`${staff}/commit/member/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         people.value = res2.data.pick
         const usedata = res2.data.picked
         if(usedata.length === 0){
