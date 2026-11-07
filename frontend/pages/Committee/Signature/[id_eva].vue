@@ -40,7 +40,7 @@
                                     <td class="border text-center">{{ result.signature}}</td>
                                     <td class="border text-center">
                                         <v-btn class="text-center text-white ma-2" color="info" size="small" prepend-icon="mdi-eye" @click="view(result.signature)">เปิดดู</v-btn>
-                                        <v-btn class="text-center text-white ma-2" color="error" size="small" @click="del(result.id_eva)">ลบ</v-btn>
+                                        <v-btn class="text-center text-white ma-2" color="error" size="small" @click="del()">ลบ</v-btn>
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,7 +106,7 @@ const fetch = async()=>{
 }
 
 
-const del = async(id_eva:number)=>{
+const del = async()=>{
     if(!confirm('ต้องการลบข้อมูลชุดนี้ใช่หรือไม่'))return
     try {
         await axios.delete(`${commit}/signature/delete/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
@@ -114,6 +114,7 @@ const del = async(id_eva:number)=>{
         await reset()
     } catch (error) {
         console.error("error delete",error);
+        alert(axios.isAxiosError(error) ? error.response?.data?.message ?? 'ลบเอกสารไม่สำเร็จ' : 'ลบเอกสารไม่สำเร็จ')
         
     }
 }

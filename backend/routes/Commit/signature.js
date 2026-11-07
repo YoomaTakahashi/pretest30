@@ -37,19 +37,26 @@ router.post('/:id_eva',verifyToken,requireRole('กรรมการประ�
 
 router.delete('/delete/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
     try {
-        const id_eva = req.params.id_eva
         const id_member = req.user.id_member
-        const [[d]] = await db.query(`select signature from tb_commit where id_eva=? and id_member=?`,[id_eva,id_member])
-        const fp = path.join(uploadDir,d.signature)
-        if(fs.existsSync(fp)){
-            fs.unlinkSync(fp)
+        const id_eva = req.params.id_eva
+        const [[d]] = await db.query(`select signature from tb_commit where id_member=? and id_eva=?`,[id_member,id_eva])
+        if(!d){
+            return res.status(404).json({message:"ไม่พบข้อมูลการประเมินของกรรมการ"})
         }
-        await db.query(`update tb_commit set signature=? where id_eva=? and id_member=? `,[null,id_eva,id_member])
-        res.status(201).json({message:'del Success'})
+        if(d.signature){
+            const fp = path.join(uploadDir,d.signature)
+            if(fs.existsSync(fp)){
+                fs.unlinkSync(fp)
+            }
+        }
+        await db.query(`update tb_commit set signature=? where id_eva=? and id_member=?`,[null,id_eva,id_member])
+        res.status(201).json({message:"Delect Success"})
     } catch (error) {
-        console.error("error delete",error);
-        res.status(500).json({message:"Error delete"})
+        console.error("delete error",error);
+        res.status(500).json({message:"delete error"})
+        
     }
+    
 })
 
 router.get('/show/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
