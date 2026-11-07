@@ -81,7 +81,7 @@ const roles = [
     //commit nav
     {title:'รายชื่อผู้รับการประเมินผล',to:'/Committee',role:'กรรมการประเมิน'},
     {title:'ดำเนินการประเมิน',to:'/Committee/show_eva',role:'กรรมการประเมิน'},
-    {title:'ตรวจสอบผลและยืนยัน',to:'/Committee/check_confirm',role:'กรรมการประเมิน'},
+    {title:'ยืนยันผลการประเมิน',to:'/Committee/check_confirm',role:'กรรมการประเมิน'},
     {title:'คู่มือการประเมิน',to:'/Committee/doc',role:'กรรมการประเมิน'},
 ]
 

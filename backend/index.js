@@ -92,8 +92,6 @@ app.use('/api/Commit/save_score',save_score)
 const score_member3 = require('./routes/Commit/score_member')
 app.use('/api/Commit/score_member',score_member3)
 
-const score_commit3 = require('./routes/Commit/score_commit')
-app.use('/api/Commit/score_commit',score_commit3)
 
 app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
 app.listen(3001,()=>{
