@@ -12,7 +12,7 @@
                                     <th class="text-center border">ชื่อ</th>
                                     <th class="text-center border">นามสกุล</th>
                                     <th class="text-center border">วันที่ออกแบบประเมิน</th>
-                                    <th class="text-center border">ตรวจสอบ</th>
+                                    <th class="text-center border">คะแนนประเมินตนเอง</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -22,7 +22,7 @@
                                     <td class="text-center border">{{ items.lname }}</td>
                                     <td class="text-center border">{{ items.day_eva }}</td>
                                     <td class="text-center border">
-                                        <v-btn color="blue" class="text-white" size="small" @click="go(items.id_eva)">ประเมิน</v-btn>
+                                        <v-btn color="blue" class="text-white" size="small" @click="go(items.id_eva)">ตรวจสอบ</v-btn>
                                     </td>
                                 </tr>
                                 <tr v-if="result.length === 0">
