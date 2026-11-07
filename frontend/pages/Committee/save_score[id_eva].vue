@@ -26,7 +26,7 @@
                     </v-row>
                     <div class="pa-2">
                         <label for="ข้อเสนอแนะ">
-                            <v-textarea class="mt-2" label="(ถ้ามี)" variant="solo-filled" v-model="indicate.detail_eva" rows="2"></v-textarea>
+                            <v-textarea class="mt-2" label="(ถ้ามี)" variant="solo-filled" v-model="detail_commit" rows="2"></v-textarea>
                         </label>
                     </div>
                     <div class="mt-3 text-center">
@@ -49,10 +49,15 @@ const topics = ref<any>([])
 const detail_commit = ref('')
 const id_eva = useRoute().params.id_eva
 
+const viweFile = (filename:string) =>{
+    const url = new URL (`http://localhost:3001/uploads/file_eva/${filename}`)
+    window.open(url,'_blank')
+}
+
 const fetch = async()=>{
     const token = localStorage.getItem('token')
     try {
-        const res = await axios.get(`${commit}/selfeva/user/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${commit}/save_score/user/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         user.value = res.data
     } catch (error) {
         console.error('Error get user',error)
@@ -61,7 +66,7 @@ const fetch = async()=>{
 const fetchTopic = async()=>{
     const token = localStorage.getItem('token')
     try {
-        const res = await axios.get(`${commit}/selfeva/topic/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${commit}/save_score/topic/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
         topics.value = res.data
     } catch (error) {
         console.error('Error get topic',error)
@@ -92,6 +97,9 @@ const saveScore = async()=>{
     }
     formData.append('scores',JSON.stringify(allScore))
     const detail_commitTo = ref('')
+    if (detail_commit.value && detail_commit.trim() ){
+        detail_commitTo.value = detail_commit.value
+    }else{ detail_commit.value = 'ไม่มี' }
     formData.append('detail_commit',detail_commitTo.value)
     try {
         await axios.post(`${commit}/save_score/save/${id_eva}`,formData,{headers:{Authorization:`Bearer ${token}`}})

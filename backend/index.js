@@ -21,7 +21,6 @@ app.use('/api/profile',profile)
 const auth = require('./routes/auth')
 app.use('/api/auth',auth)
 
-<<<<<<< HEAD
 //-------------------------------------------------------staff api ----------------------------------------------\\
 
 
@@ -37,28 +36,11 @@ const score_commit = require('./routes/Eva/score_commit')
 app.use('/api/Eva/score_commit',score_commit  )
 
 //-------------------------------------------------------commit api ----------------------------------------------\\
-=======
-const member = require('./routes/Staff/member')
-app.use('/api/Staff/member',member)
+const show_eva = require('./routes/Commit/show_eva')
+app.use('/api/Commit/show_eva',show_eva)
 
-const topic = require('./routes/Staff/topic')
-app.use('/api/Staff/topic',topic)
-
-const indicate = require('./routes/Staff/indicate')
-app.use('/api/Staff/indicate',indicate)
-
-const system = require('./routes/Staff/system')
-app.use('/api/Staff/system',system)
-
-const eva = require('./routes/Staff/eva')
-app.use('/api/Staff/eva',eva)
-
-const commit = require('./routes/Staff/commit')
-app.use('/api/Staff/commit',commit)
-
-const doc = require('./routes/Staff/doc')
-app.use('/api/Staff/doc',doc)
->>>>>>> 82d972c678ad72e7d917b09c79a3aedb8e93b695
+const save_score = require('./routes/Commit/save_score')
+app.use('/api/Commit/save_score',save_score)
 
 app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
 app.listen(3001,()=>{
