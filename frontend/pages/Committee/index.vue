@@ -1,13 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div>
-
-    </div>
-</template>
-
-<script setup lang="ts">
-
-=======
     <v-container fluid class="py-10">
                 <v-card>
                     <v-sheet class="pa-4" color="">
@@ -67,7 +58,6 @@ const go = (id_eva:number) => {
 }
 
 onMounted(fetch)
->>>>>>> 065d59cb46f3912a5408cf8cdabee63e9b8805b9
 </script>
 
 <style scoped>
